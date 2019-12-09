@@ -1,0 +1,30 @@
+---
+- name: Cloning oh-my-zsh
+  git:
+    repo=https://github.com/robbyrussell/oh-my-zsh
+    dest=~/.oh-my-zsh
+
+- name: Creating new ~/.zshrc
+  copy:
+    src=~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest=~/.zshrc
+
+- name: set default shell for user
+  become: yes
+  user:
+    name: daddyingrave
+    shell: /bin/zsh
+
+# https://askubuntu.com/questions/910821/programs-installed-via-snap-not-showing-up-in-launcher
+- name: export all directories (for snap)
+  become: yes
+  lineinfile:
+    path: /etc/zsh/zprofile
+    regexp: "^emulate*"
+    line: "emulate sh -c 'source /etc/profile'"
+
+- name: set theme for zsh
+  lineinfile:
+    path: ~/.zshrc
+    regexp: "^ZSH_THEME*"
+    line: 'ZSH_THEME="avit"'
