@@ -1,0 +1,17 @@
+---
+- name: Check if sdkman is installed
+  shell: test -d /home/{{ ansible_user }}/.sdkman && echo "yes" || echo "no"
+  register: is_sdkman_installed
+
+- name: Install SDKMAN!
+  when: is_sdkman_installed.stdout == "no"
+  shell: curl -s http://get.sdkman.io | bash executable=/bin/zsh
+  sudo: no
+
+- name: Ensure presence of bashrc
+  file: state=touch path={{ user_home_path }}/.zshrc
+  sudo: no
+
+- name: Add sdkman in .bashrc
+  lineinfile: dest={{ user_home_path }}/.zshrc regexp="\/.sdkman/bin\/sdkman\-init\.sh" line='[[ -s "{{sdkman_folder}}/bin/sdkman-init.sh" && ! $(which sdkman-init.sh) ]] && source "{{sdkman_folder}}/bin/sdkman-init.sh"'
+  sudo: no

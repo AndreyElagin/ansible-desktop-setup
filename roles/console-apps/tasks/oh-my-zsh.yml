@@ -28,3 +28,11 @@
     path: ~/.zshrc
     regexp: "^ZSH_THEME*"
     line: 'ZSH_THEME="avit"'
+
+- name: export SDKMAN_DIR
+  blockinfile:
+    path: ~/.zshrc
+    block: |
+      export SDKMAN_DIR="/home/daddyingrave/.sdkman"
+      [[ -s "/home/daddyingrave/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daddyingrave/.sdkman/bin/sdkman-init.sh"
+      export SDKMAN_OFFLINE_MODE=false
