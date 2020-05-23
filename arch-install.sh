@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 
+echo "Setup hostname"
 
-#echo daddyingrave >> /etc/hostname
-#14. pacman -S dhcpcd
-#15. systemctl enable sshd.service && systemctl enable dhcpcd
-#16. echo -e '127.0.0.1\tlocalhost\n::1\tlocalhost\n127.0.1.1\tdaddyingrave.localdomain\tdaddyingrave' /etc/hosts
-#
-#    ```
+echo daddyingrave >> /etc/hostname
+
+echo "Setup /etc/hosts"
+
+echo "127.0.0.1	localhost" >> /etc/hosts
+echo "::1	localhost" >> /etc/hosts
+echo "127.0.1.1	daddyingrave.localdomain daddyingrave" >> /etc/hosts 
+
+cat /etc/hosts
+
+echo "enable sshd and dhcpcd services"
+
+systemctl enable sshd.service && systemctl enable dhcpcd
+
 #    /etc/systemd/network/20-wired.network[Match]
 #    Name=enp3s0f0[Network]
 #    DHCP=ipv4

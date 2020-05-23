@@ -14,8 +14,9 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "chroot to /mnt"
 
-arch-chroot /mnt
+#arch-chroot /mnt
 
+cat << EOF | arch-chroot /mnt
 echo "Setting up timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -32,3 +33,4 @@ cat /etc/locale.conf && \
 locale-gen
 
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
+EOF
