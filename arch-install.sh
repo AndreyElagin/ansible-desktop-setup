@@ -2,10 +2,13 @@
 
 DISK=""
 
+umount -q /mnt/boot && umount -q /mnt
+
 echo "Create new partitions on $DISK"
 
 (
 echo o      # Create a new empty partition table
+echo y      # Proceed
 
 echo n      # Add a new EFI partition
 echo 1      # Partition number
@@ -26,8 +29,12 @@ echo Y      # Apply changes
 
 echo "Format created partitions"
 
-mkfs.fat -F32 "/dev/${DISK}1"
-mkfs.ext4 "/dev/${DISK}2"
+yes | mkfs.fat -F32 "/dev/${DISK}1"
+yes | mkfs.ext4 "/dev/${DISK}2"
+
+mount "/dev/${DISK}2" /mnt && \
+mkdir /mnt/boot && \
+mount "/dev/${DISK}1" /mnt/boot
 
 #Installation:
 #
