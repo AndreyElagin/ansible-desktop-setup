@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DISK=""
+DISK="vda" # replace with actual disk name
 
 umount -q /mnt/boot && umount -q /mnt
 
@@ -25,7 +25,7 @@ echo        # Hex code or GUID
 echo p      # Verify changes
 echo w      # Write changes
 echo Y      # Apply changes
-) | sudo gdisk "$DISK"
+) | sudo gdisk "/dev/$DISK"
 
 echo "Format created partitions"
 
