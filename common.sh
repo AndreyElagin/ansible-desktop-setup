@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DISK="$0"
+DISK="$1"
 
 umount -q /mnt/boot && umount -q /mnt
 

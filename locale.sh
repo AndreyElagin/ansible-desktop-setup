@@ -15,4 +15,3 @@ cat /etc/locale.gen && \
 cat /etc/locale.conf && \
 locale-gen
 
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
