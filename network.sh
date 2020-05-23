@@ -48,3 +48,4 @@ systemctl disable dhcpcd && \
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf && \
 ls -la /etc/resolv.conf && \
 resolvectl status
+
