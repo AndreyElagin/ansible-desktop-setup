@@ -68,28 +68,8 @@
     name: robo3t-snap
     state: present
 
-- name: install telegram
-  become: yes
-  snap:
-    name: telegram-desktop
-    state: present
-
 - name: install keepass
   become: yes
   snap:
     name: keepassxc
-    state: present
-
-- name: install intellij IDEA community
-  become: yes
-  snap:
-    name: intellij-idea-community
-    classic: yes
-    state: present
-
-- name: install intellij IDEA ultimate
-  become: yes
-  snap:
-    name: intellij-idea-ultimate
-    classic: yes
     state: present
