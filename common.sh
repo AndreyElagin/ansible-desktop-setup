@@ -1,5 +1,41 @@
 #!/usr/bin/env bash
 
+DISK="$0"
+
+umount -q /mnt/boot && umount -q /mnt
+
+echo "Create new partitions on $DISK"
+
+(
+echo o      # Create a new empty partition table
+echo y      # Proceed
+
+echo n      # Add a new EFI partition
+echo 1      # Partition number
+echo        # First sector (Accept default: 1)
+echo +512M  # Last sector (Accept default: varies)
+echo EF00   # Hex code or GUID
+
+echo n      # Add a new ROOT partition
+echo 2      # Partition number
+echo        # First sector (Accept default: 1)
+echo        # Last sector (Accept default: varies)
+echo        # Hex code or GUID
+
+echo p      # Verify changes
+echo w      # Write changes
+echo Y      # Apply changes
+) | sudo gdisk "/dev/$DISK"
+
+echo "Format created partitions"
+
+yes | mkfs.fat -F32 "/dev/${DISK}1"
+yes | mkfs.ext4 "/dev/${DISK}2"
+
+mount "/dev/${DISK}2" /mnt && \
+mkdir /mnt/boot && \
+mount "/dev/${DISK}1" /mnt/boot
+
 echo "Setup date/time"
 
 timedatectl set-ntp true
@@ -11,26 +47,3 @@ pacstrap /mnt base base-devel linux linux-firmware openssh dhcpcd grub
 echo "Filling fstab"
 
 genfstab -U /mnt >> /mnt/etc/fstab
-
-echo "chroot to /mnt"
-
-#arch-chroot /mnt
-
-cat << EOF | arch-chroot /mnt
-echo "Setting up timezone"
-
-ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
-hwclock --systohc
-
-echo "Setting up locales"
-
-mv /etc/locale.gen /etc/locale.gen.bak && \
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && \
-echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen && \
-echo "LANG=en_US.UTF-8" > /etc/locale.conf && \
-cat /etc/locale.gen && \
-cat /etc/locale.conf && \
-locale-gen
-
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
-EOF
