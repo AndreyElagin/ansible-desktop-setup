@@ -12,7 +12,11 @@ echo "Filling fstab"
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "Setting up timezon"
+echo "chroot to /mnt"
+
+arch-chroot /mnt
+
+echo "Setting up timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 hwclock --systohc
