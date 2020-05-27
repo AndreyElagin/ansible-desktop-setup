@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# In chroot
+
 echo "Setting up timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
