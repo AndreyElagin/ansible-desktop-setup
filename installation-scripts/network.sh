@@ -7,7 +7,7 @@ ADAPTER="$1"
 if [ -z "$ADAPTER" ]
 then
       echo "Interface name is required"
-      return 666;
+      exit 666;
 else
       echo "Setup network for interface: $ADAPTER"
 fi

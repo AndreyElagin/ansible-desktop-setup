@@ -7,7 +7,7 @@ DISK="$1"
 if [ -z "$DISK" ]
 then
       echo "Disk name is required"
-      return 666;
+      exit 666;
 else
       echo "Setup partitions for disk: $DISK"
 fi
