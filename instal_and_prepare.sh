@@ -24,7 +24,7 @@ echo        # Hex code or GUID
 
 echo p      # Verify changes
 echo w      # Write changes
-echo Y      # Apply changes
+echo y      # Apply changes
 ) | sudo gdisk "/dev/$DISK"
 
 echo "Format created partitions"
@@ -36,14 +36,17 @@ mount "/dev/${DISK}2" /mnt && \
 mkdir /mnt/boot && \
 mount "/dev/${DISK}1" /mnt/boot
 
-echo "Setup date/time"
+echo "Update system clock"
 
 timedatectl set-ntp true
 
 echo "Installing OS packages"
 
-pacstrap /mnt base base-devel linux linux-firmware openssh dhcpcd grub
+pacstrap /mnt base base-devel linux linux-firmware openssh dhcpcd grub git vim man-db man-pages networkmanager
 
 echo "Filling fstab"
 
 genfstab -U /mnt >> /mnt/etc/fstab
+
+cp locale.sh /mnt/opt
+cp network.sh /mnt/opt
