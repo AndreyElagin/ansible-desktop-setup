@@ -51,7 +51,7 @@ timedatectl set-ntp true
 echo "Installing OS packages"
 
 pacstrap /mnt base base-devel linux linux-firmware openssh dhcpcd grub efibootmgr \
-git vim man-db man-pages networkmanager
+git vim man-db man-pages networkmanager reflector python-passlib ansible amd-ucode 
 
 echo "Filling fstab"
 

@@ -14,14 +14,14 @@ fi
 
 echo "Setup hostname"
 
-hostnamectl set-hostname arch
+hostnamectl set-hostname daddyingrave-arch
 
 echo "Setup /etc/hosts"
 
 {
-  echo "127.0.0.1	localhost";
-  echo "::1	localhost";
-  echo "127.0.1.1	daddyingrave.localdomain daddyingrave";
+  echo "127.0.0.1 localhost";
+  echo "::1   localhost";
+  echo "127.0.1.1	daddyingrave-arch.localdomain daddyingrave-arch";
 } >> /etc/hosts
 
 
