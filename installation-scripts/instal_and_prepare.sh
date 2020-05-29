@@ -57,7 +57,7 @@ echo "Filling fstab"
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo "Copy installation script to mounted partition"
+echo "Copy installation scripts to mounted partition"
 
 cp locale.sh /mnt/opt && chmod +x /mnt/opt/locale.sh
 cp network.sh /mnt/opt && chmod +x /mnt/opt/network.sh
