@@ -30,7 +30,6 @@ cat /etc/hosts
 echo "enable sshd and dhcpcd services"
 
 systemctl enable sshd.service &&
-systemctl enable dhcpcd &&
 systemctl enable NetworkManager
 
 echo "Setup network manager"
@@ -41,6 +40,3 @@ servers=1.1.1.1,1.0.0.1
 EOF
 
 echo "Disable network daemons"
-
-systemctl stop dhcpcd && \
-systemctl disable dhcpcd
