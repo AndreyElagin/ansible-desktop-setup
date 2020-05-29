@@ -43,4 +43,4 @@ EOF
 echo "Disable network daemons"
 
 systemctl stop dhcpcd && \
-systemctl disable dhcpcd && \
+systemctl disable dhcpcd
