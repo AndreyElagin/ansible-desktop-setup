@@ -20,7 +20,9 @@
 - name: ensure presence of bashrc
   become: yes
   become_user: "{{ user.name }}"
-  file: state=touch path={{ user_home_path }}/.zshrc
+  file:
+    state: touch
+    path: "/home{{ user.name }}/.zshrc"
   tags:
     - console-apps
     - sdkman
