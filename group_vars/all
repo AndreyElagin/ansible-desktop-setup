@@ -3,6 +3,7 @@ user:
     uid: 1000
     group: daddyingrave
     shell: /usr/bin/bash
+    user_home_path: /home/daddyingrave
     log:
       dir: log
       rotate: 8

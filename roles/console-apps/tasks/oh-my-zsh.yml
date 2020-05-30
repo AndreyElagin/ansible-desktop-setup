@@ -1,5 +1,7 @@
 ---
 - name: cloning oh-my-zsh
+  become: yes
+  become_user: "{{ user.name }}"
   git:
     repo: https://github.com/robbyrussell/oh-my-zsh
     dest: ~/.oh-my-zsh
@@ -7,6 +9,8 @@
     - console-apps
 
 - name: creating new ~/.zshrc
+  become: yes
+  become_user: "{{ user.name }}"
   copy:
     src: ~/.oh-my-zsh/templates/zshrc.zsh-template
     dest: ~/.zshrc
@@ -14,6 +18,8 @@
     - console-apps
 
 - name: set default shell for user
+  become: yes
+  become_user: "{{ user.name }}"
   user:
     name: "{{ user.name }}"
     shell: /bin/zsh
@@ -23,6 +29,7 @@
 # https://askubuntu.com/questions/910821/programs-installed-via-snap-not-showing-up-in-launcher
 - name: export all directories (for snap)
   become: yes
+  become_user: "{{ user.name }}"
   lineinfile:
     path: /etc/zsh/zprofile
     regexp: "^emulate*"
@@ -31,6 +38,8 @@
     - console-apps
 
 - name: set theme for zsh
+  become: yes
+  become_user: "{{ user.name }}"
   lineinfile:
     path: ~/.zshrc
     regexp: "^ZSH_THEME*"
@@ -39,6 +48,8 @@
     - console-apps
 
 - name: export SDKMAN_DIR
+  become: yes
+  become_user: "{{ user.name }}"
   blockinfile:
     path: ~/.zshrc
     block: |
