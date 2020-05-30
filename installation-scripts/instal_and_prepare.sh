@@ -33,16 +33,16 @@ echo        # Hex code or GUID
 echo p      # Verify changes
 echo w      # Write changes
 echo y      # Apply changes
-) | sudo gdisk "/dev/$DISK"
+) | sudo gdisk "/dev/$DISKp"
 
 echo "Format created partitions"
 
-yes | mkfs.fat -F32 "/dev/${DISK}1"
-yes | mkfs.ext4 "/dev/${DISK}2"
+yes | mkfs.fat -F32 "/dev/${DISK}p1"
+yes | mkfs.ext4 "/dev/${DISK}p2"
 
-mount "/dev/${DISK}2" /mnt && \
+mount "/dev/${DISK}p2" /mnt && \
 mkdir /mnt/boot && \
-mount "/dev/${DISK}1" /mnt/boot
+mount "/dev/${DISK}p1" /mnt/boot
 
 echo "Update system clock"
 
@@ -62,4 +62,3 @@ echo "Copy installation scripts to mounted partition"
 cp locale.sh /mnt/opt && chmod +x /mnt/opt/locale.sh
 cp network.sh /mnt/opt && chmod +x /mnt/opt/network.sh
 cp bootloader.sh /mnt/opt && chmod +x /mnt/opt/bootloader.sh
-cp postinstall.sh /mnt/opt && chmod +x /mnt/opt/postinstall.sh
