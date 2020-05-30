@@ -15,6 +15,7 @@
       - apache2-utils # mostly for ab
       - ranger
       - sshpass
+      - alacritty
     state: present
   tags:
     - console-apps
