@@ -33,7 +33,7 @@ echo        # Hex code or GUID
 echo p      # Verify changes
 echo w      # Write changes
 echo y      # Apply changes
-) | sudo gdisk "/dev/$DISKp"
+) | sudo gdisk "/dev/$DISK"
 
 echo "Format created partitions"
 
