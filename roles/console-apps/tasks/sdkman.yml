@@ -22,7 +22,7 @@
   become_user: "{{ user.name }}"
   file:
     state: touch
-    path: "/home{{ user.name }}/.zshrc"
+    path: "/home/{{ user.name }}/.zshrc"
   tags:
     - console-apps
     - sdkman
