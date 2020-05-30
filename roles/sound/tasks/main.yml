@@ -11,9 +11,9 @@
     name: "{{ item }}"
     state: present
   with_items:
-      - pulseaudio
-      - pulseaudio-alsa
-      - pavucontrol
+    - pulseaudio
+    - pulseaudio-alsa
+    - pavucontrol
   notify: restart pulse as user
   tags:
     - sound

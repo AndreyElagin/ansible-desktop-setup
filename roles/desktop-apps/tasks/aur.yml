@@ -1,7 +1,7 @@
 ---
 - name: install snapd
   become: yes
-  become_user: daddyingrave
+  become_user: "{{ user.name }}"
   aur:
     name: snapd
     use: makepkg
@@ -12,7 +12,7 @@
 
 - name: install insync
   become: yes
-  become_user: daddyingrave
+  become_user: "{{ user.name }}"
   aur:
     name: insync
     use: makepkg
@@ -23,7 +23,7 @@
 
 - name: install insync
   become: yes
-  become_user: daddyingrave
+  become_user: "{{ user.name }}"
   aur:
     name: jetbrains-toolbox
     use: makepkg

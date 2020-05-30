@@ -1,0 +1,7 @@
+---
+- name: refresh pacman mirrors
+  pacman:
+    update_cache: yes
+
+- include: user.yml
+- include: sudo.yml

@@ -1,0 +1,65 @@
+---
+- name: create user group
+  group:
+    name: "{{ user.group }}"
+    state: present
+  tags:
+    - user
+
+- name: create user and assign to group
+  user:
+    name: "{{ user.name }}"
+    group: "{{ user.group }}"
+    password: "{{ user_password|password_hash('sha512') }}"
+    shell: zsh
+    update_password: on_create
+    uid: "{{ user.uid }}"
+    groups:
+      - wheel
+      - storage
+      - power
+      - audio
+    append: yes
+  tags:
+    - user
+
+- name: create user log dir
+  file:
+    path: /home/{{ user.name }}/{{ user.log.dir }}
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+  when: user.log.dir is defined
+  tags:
+    - user
+
+- name: install logrotate
+  pacman:
+    name: logrotate
+    state: present
+
+- name: push logrotate config for user logs
+  template:
+    src: logrotate.j2
+    dest: /etc/logrotate.d/user
+  when: user.log.dir is defined
+  tags:
+    - user
+
+- name: create user socket directory
+  file:
+    path: /run/user/{{ user.uid }}
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+    mode: 0700
+  tags:
+    - user
+
+- name: start user systemd instance
+  service:
+    name: "user@{{ user.uid }}"
+    state: started
+  notify: stop systemd per-user instance
+  tags:
+    - user

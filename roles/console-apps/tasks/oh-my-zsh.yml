@@ -15,7 +15,7 @@
 
 - name: set default shell for user
   user:
-    name: daddyingrave
+    name: "{{ user.name }}"
     shell: /bin/zsh
   tags:
     - console-apps
@@ -42,8 +42,8 @@
   blockinfile:
     path: ~/.zshrc
     block: |
-      export SDKMAN_DIR="/home/daddyingrave/.sdkman"
-      [[ -s "/home/daddyingrave/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daddyingrave/.sdkman/bin/sdkman-init.sh"
+      export SDKMAN_DIR="/home/{{ user.name }}/.sdkman"
+      [[ -s "/home/{{ user.name }}/.sdkman/bin/sdkman-init.sh" ]] && source "/home/{{ user.name }}/.sdkman/bin/sdkman-init.sh"
       export SDKMAN_OFFLINE_MODE=false
   tags:
     - console-apps

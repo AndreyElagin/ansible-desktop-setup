@@ -23,14 +23,6 @@ echo "Set root password"
 
 passwd
 
-echo "Create user"
-
-useradd -m -g users -G wheel,storage,power,docker,autologin,audio -s /bin/bash daddyingrave
-
-echo "Set user password"
-
-passwd daddyingrave
-
 echo "Elect mirrors"
 
 reflector --verbose --latest 200 --number 5 --sort rate --save /etc/pacman.d/mirrorlist

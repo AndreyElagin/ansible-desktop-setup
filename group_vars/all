@@ -1,0 +1,15 @@
+user:
+    name: daddyingrave
+    uid: 1000
+    group: daddyingrave
+    shell: /usr/bin/zsh
+    log:
+      dir: log
+      rotate: 8
+
+hostname: daddyingrave-arch
+
+dotfiles:
+    url: git@github.com:pigmonkey/dotfiles.git
+    destination: projects/dotfiles
+    rcup_flags: -fx README.md
