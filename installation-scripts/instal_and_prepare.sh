@@ -44,6 +44,8 @@ mount "/dev/${DISK}p2" /mnt && \
 mkdir /mnt/boot && \
 mount "/dev/${DISK}p1" /mnt/boot
 
+sleep 8
+
 echo "Update system clock"
 
 timedatectl set-ntp true
@@ -59,6 +61,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "Copy installation scripts to mounted partition"
 
-cp locale.sh /mnt/opt && chmod +x /mnt/opt/locale.sh
+cp locale.sh /mnt/opt && chmod +x /mnt/opt/locale_and_user.sh
 cp network.sh /mnt/opt && chmod +x /mnt/opt/network.sh
 cp bootloader.sh /mnt/opt && chmod +x /mnt/opt/bootloader.sh
