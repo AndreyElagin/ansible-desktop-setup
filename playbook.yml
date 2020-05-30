@@ -1,8 +1,8 @@
 - hosts: localhost
   become: yes
   roles:
-    - role: console-apps
-#    - role: user
+    - role: user
+#    - role: console-apps
   #    - role: graphics
   #    - role: ui
   #    - role: display-manager
