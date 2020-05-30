@@ -1,0 +1,31 @@
+---
+- name: install WM and related packages
+  pacman:
+    name:
+      - i3-gaps
+      - i3status
+      - i3lock
+      - rofi
+    state: present
+  tags:
+    - ui
+
+- name: install fonts
+  pacman:
+    name:
+      - ttf-dejavu
+      - ttf-liberation
+      - ttf-droid
+      - ttf-inconsolata
+      - ttf-roboto
+      - ttf-font-awesome
+      - ttf-fira-code
+      - ttf-hack
+      - terminus-font
+      - noto-fonts
+      - adobe-source-code-pro-fonts
+    state: present
+  tags:
+    - ui
+
+- import_tasks: aur.yml

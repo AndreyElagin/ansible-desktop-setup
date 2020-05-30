@@ -1,19 +1,24 @@
 ---
-- name: Cloning oh-my-zsh
+- name: cloning oh-my-zsh
   git:
-    repo=https://github.com/robbyrussell/oh-my-zsh
-    dest=~/.oh-my-zsh
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: ~/.oh-my-zsh
+  tags:
+    - console-apps
 
-- name: Creating new ~/.zshrc
+- name: creating new ~/.zshrc
   copy:
-    src=~/.oh-my-zsh/templates/zshrc.zsh-template
-    dest=~/.zshrc
+    src: ~/.oh-my-zsh/templates/zshrc.zsh-template
+    dest: ~/.zshrc
+  tags:
+    - console-apps
 
 - name: set default shell for user
-  become: yes
   user:
     name: daddyingrave
     shell: /bin/zsh
+  tags:
+    - console-apps
 
 # https://askubuntu.com/questions/910821/programs-installed-via-snap-not-showing-up-in-launcher
 - name: export all directories (for snap)
@@ -22,12 +27,16 @@
     path: /etc/zsh/zprofile
     regexp: "^emulate*"
     line: "emulate sh -c 'source /etc/profile'"
+  tags:
+    - console-apps
 
 - name: set theme for zsh
   lineinfile:
     path: ~/.zshrc
     regexp: "^ZSH_THEME*"
     line: 'ZSH_THEME="avit"'
+  tags:
+    - console-apps
 
 - name: export SDKMAN_DIR
   blockinfile:
@@ -36,3 +45,5 @@
       export SDKMAN_DIR="/home/daddyingrave/.sdkman"
       [[ -s "/home/daddyingrave/.sdkman/bin/sdkman-init.sh" ]] && source "/home/daddyingrave/.sdkman/bin/sdkman-init.sh"
       export SDKMAN_OFFLINE_MODE=false
+  tags:
+    - console-apps

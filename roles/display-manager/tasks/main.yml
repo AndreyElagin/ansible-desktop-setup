@@ -1,0 +1,71 @@
+---
+- name: install LightDM
+  pacman:
+    name:
+      - lightdm
+      - lightdm-gtk-greeter
+    state: present
+  tags:
+    - display-manager
+    - lightdm
+
+- name: enable LightDM
+  service:
+    name: lightdm.service
+    enabled: yes
+  tags:
+    - display-manager
+    - lightdm
+
+- name: create background dir
+  file:
+    path: /usr/share/backgrounds
+    state: directory
+  tags:
+    - display-manager
+    - lightdm
+
+- name: push LightDM greeter background
+  copy:
+    src: bg.png
+    dest: /usr/share/backgrounds/bg.png
+  tags:
+    - display-manager
+    - lightdm
+
+- name: specify LightDM greeter background
+  lineinfile:
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
+    regexp: "^background="
+    state: present
+    line: "background=/usr/share/backgrounds/bg.png"
+  tags:
+    - display-manager
+    - lightdm
+
+- name: hide user images
+  lineinfile:
+    dest: /etc/lightdm/lightdm-gtk-greeter.conf
+    regexp: "^hide-user-image="
+    state: present
+    line: "hide-user-image=true"
+  tags:
+    - display-manager
+    - lightdm
+
+- name: force LightDM greeter theme
+  lineinfile:
+    dest: /usr/share/xgreeters/lightdm-gtk-greeter.desktop
+    regexp: "^Exec="
+    state: present
+    line: "Exec=env GTK_THEME=Adwaita:dark lightdm-gtk-greeter"
+  tags:
+    - display-manager
+    - lightdm
+
+# todo setup dpi
+# /etc/lightdm/lightdm-gtk-greeter.conf
+# [greeter]
+# [...]
+# xft-dpi=261
+# [...]

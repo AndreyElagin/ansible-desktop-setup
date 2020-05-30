@@ -1,0 +1,20 @@
+---
+- name: install yay
+  become: yes
+  become_user: daddyingrave
+  aur:
+    name: yay
+    use: makepkg
+    state: present
+  tags:
+    - aur
+    - console-apps
+
+- name: use all cores when compressing packages
+  lineinfile:
+    dest: /etc/makepkg.conf
+    regexp: "^COMPRESSXZ"
+    line: "COMPRESSXZ=(xz -c -z - --threads=0)"
+  tags:
+    - aur
+    - console-apps

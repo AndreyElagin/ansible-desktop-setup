@@ -1,7 +1,7 @@
 - hosts: localhost
   roles:
-    - role: desktop-apps
     - role: console-apps
+    - role: desktop-apps
     - role: comcast.sdkman
       sdkman_user: daddyingrave
       sdkman_group: daddyingrave

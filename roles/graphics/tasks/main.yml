@@ -1,0 +1,14 @@
+---
+- name: install graphics related packages
+  pacman:
+    name:
+      - xorg-server
+      - xorg-apps
+      - xorg-xinit
+      - picom
+      - nvidia
+      - nvidia-utils
+      - nvidia-settings
+    state: present
+  tags:
+    - graphics

@@ -1,0 +1,33 @@
+---
+- name: install snapd
+  become: yes
+  become_user: daddyingrave
+  aur:
+    name: snapd
+    use: makepkg
+    state: present
+  tags:
+    - aur
+    - desktop-apps
+
+- name: install insync
+  become: yes
+  become_user: daddyingrave
+  aur:
+    name: insync
+    use: makepkg
+    state: present
+  tags:
+    - aur
+    - desktop-apps
+
+- name: install insync
+  become: yes
+  become_user: daddyingrave
+  aur:
+    name: jetbrains-toolbox
+    use: makepkg
+    state: present
+  tags:
+    - aur
+    - desktop-apps

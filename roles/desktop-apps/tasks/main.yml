@@ -1,75 +1,34 @@
 ---
-- name: install dependencies
-  become: yes
-  apt:
-    name:
-      - ca-certificates
-      - apt-transport-https
-      - gconf2
-      - libasound2
-      - libgtk2.0-0
-      - libxss1
-      - snapd
-    state: present
+- import_tasks: aur.yml
 
-- name: install vscode repo key
-  become: yes
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: ACCAF35C
-
-- name: add vscode repo
-  become: yes
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-    filename: vscode
+- name: install Okular
+  pacman:
+    name: okular
     state: present
+  tags:
+    - desktop-apps
 
 - name: install insync repo key
   become: yes
   apt_key:
     url: 'https://packages.microsoft.com/keys/microsoft.asc'
     state: present
-
-- name: add insync repo
-  become: yes
-  apt_repository:
-    repo: deb http://apt.insync.io/ubuntu eoan non-free contrib
-    filename: insync
-    state: present
-
-- name: install vscode
-  become: yes
-  apt:
-    name: code
-    state: present
-
-- name: install insync
-  become: yes
-  apt:
-    name: insync
-    state: present
+  tags:
+    - snap
+    - desktop-apps
 
 - name: install spotify
-  become: yes
   snap:
     name: spotify
     state: present
+  tags:
+    - snap
+    - desktop-apps
 
 - name: install postman
-  become: yes
   snap:
     name: postman
     state: present
-
-- name: install robo3t
-  become: yes
-  snap:
-    name: robo3t-snap
-    state: present
-
-- name: install keepass
-  become: yes
-  snap:
-    name: keepassxc
-    state: present
+  tags:
+    - snap
+    - desktop-apps

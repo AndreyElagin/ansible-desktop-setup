@@ -1,0 +1,39 @@
+---
+- name: install alsa-utils
+  pacman:
+    name: alsa-utils
+    state: present
+  tags:
+    - sound
+
+- name: install PulseAudio
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+      - pulseaudio
+      - pulseaudio-alsa
+      - pavucontrol
+  notify: restart pulse as user
+  tags:
+    - sound
+
+- name: switch output to newly connected devices
+  lineinfile:
+    line: "load-module module-switch-on-connect"
+    dest: /etc/pulse/default.pa
+    state: present
+  tags:
+    - sound
+
+- name: install pasystray
+  pacman:
+    name: pasystray
+    state: present
+
+- name: install pulseaudio-ctl
+  yay:
+    name: pulseaudio-ctl
+    user: "{{ ansible_user }}"
+  tags:
+    - sound
