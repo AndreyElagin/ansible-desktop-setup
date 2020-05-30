@@ -12,7 +12,7 @@
       - bash-completion
       - zsh
       - zsh-completions
-      - apache2-utils # mostly for ab
+      - unzip
       - ranger
       - sshpass
       - alacritty
