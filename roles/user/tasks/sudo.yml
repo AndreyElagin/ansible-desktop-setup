@@ -1,5 +1,5 @@
 ---
-- name: Install sudo
+- name: install sudo
   pacman:
     name: sudo
     state: present
@@ -7,7 +7,7 @@
     - sudo
     - user
 
-- name: Add user to wheel group
+- name: add user to wheel group
   user:
     name: "{{ user.name }}"
     groups: wheel
@@ -16,7 +16,7 @@
     - sudo
     - user
 
-- name: Copy sudo configuration
+- name: copy sudo configuration
   template:
     src: sudoers.j2
     dest: /etc/sudoers
