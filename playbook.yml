@@ -1,13 +1,13 @@
 - hosts: localhost
   become: yes
   roles:
-    - role: user
-#    - role: graphics
-#    - role: ui
-#    - role: display-manager
-#    - role: bluetooth
-#    - role: sound
-#    - role: console-apps
+    - role: console-apps
+#    - role: user
+  #    - role: graphics
+  #    - role: ui
+  #    - role: display-manager
+  #    - role: bluetooth
+  #    - role: sound
 #    - role: desktop-apps
 #    - role: comcast.sdkman
 #      sdkman_user: "{{ user.name }}"
