@@ -40,5 +40,3 @@ cat << EOF >> /etc/NetworkManager/conf.d/dns-servers.conf
 [global-dns-domain-*]
 servers=1.1.1.1,1.0.0.1
 EOF
-
-echo "Disable network daemons"
