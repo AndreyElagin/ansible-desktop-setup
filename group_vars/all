@@ -2,7 +2,7 @@ user:
     name: daddyingrave
     uid: 1000
     group: daddyingrave
-    shell: /usr/bin/zsh
+    shell: /usr/bin/bash
     log:
       dir: log
       rotate: 8
