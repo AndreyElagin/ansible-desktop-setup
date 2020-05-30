@@ -46,15 +46,3 @@
     line: 'ZSH_THEME="avit"'
   tags:
     - console-apps
-
-- name: export SDKMAN_DIR
-  become: yes
-  become_user: "{{ user.name }}"
-  blockinfile:
-    path: ~/.zshrc
-    block: |
-      export SDKMAN_DIR="/home/{{ user.name }}/.sdkman"
-      [[ -s "/home/{{ user.name }}/.sdkman/bin/sdkman-init.sh" ]] && source "/home/{{ user.name }}/.sdkman/bin/sdkman-init.sh"
-      export SDKMAN_OFFLINE_MODE=false
-  tags:
-    - console-apps
