@@ -11,7 +11,7 @@
     name: "{{ user.name }}"
     group: "{{ user.group }}"
     password: "{{ user_password|password_hash('sha512') }}"
-    shell: zsh
+    shell: bash
     update_password: on_create
     uid: "{{ user.uid }}"
     groups:
