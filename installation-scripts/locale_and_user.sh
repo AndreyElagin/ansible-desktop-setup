@@ -2,6 +2,8 @@
 
 # chroot
 
+set -e
+
 echo "Setting up timezone"
 
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime

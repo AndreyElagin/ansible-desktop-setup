@@ -2,6 +2,8 @@
 
 # In chroot
 
+set -e
+
 ADAPTER="$1"
 
 if [ -z "$ADAPTER" ]
