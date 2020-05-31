@@ -8,15 +8,6 @@
   tags:
     - desktop-apps
 
-- name: install insync repo key
-  become: yes
-  apt_key:
-    url: 'https://packages.microsoft.com/keys/microsoft.asc'
-    state: present
-  tags:
-    - snap
-    - desktop-apps
-
 - name: install spotify
   snap:
     name: spotify

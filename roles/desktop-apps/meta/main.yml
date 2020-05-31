@@ -1,3 +1,4 @@
 ---
 dependencies:
+  - console-apps
   - kewlfft.aur
