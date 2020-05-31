@@ -12,9 +12,18 @@
 - name: login to 1password
   become: yes
   become_user: "{{ user.name }}"
-  shell: op signin my.1password.com {{ user.email }}
+  command: op signin my.1password.com {{ user.email }}
   tags:
     - dotfiles
+
+#- name: login to 1password
+#  become: yes
+#  become_user: "{{ user.name }}"
+#  onepassword:
+#    secret_key: "{{ 1password_key }}"
+#    master_password: "{{ 1password_password }}"
+#  tags:
+#    - dotfiles
 
 #- name: apply dotfiles
 #  become: yes

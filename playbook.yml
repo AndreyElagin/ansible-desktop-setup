@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: vasian
   become: yes
   roles:
 #    - role: user
@@ -24,6 +24,10 @@
 #        sbt: "{{ versions.sbt }}"
 #        gradle: "{{ versions.gradle }}"
      - role: dotfiles
-  vars_prompt:
-    - name: user_password
-      prompt: "Enter desired user password"
+#  vars_prompt:
+#    - name: user_password
+#      prompt: "Enter desired user password"
+#    - name: 1password_key
+#      prompt: "Enter 1password key"
+#    - name: 1password_password
+#      prompt: "Enter 1password password"
