@@ -26,10 +26,10 @@
   become_user: "{{ user.name }}"
   onepassword_info:
     auto_login:
-      master_password: "{{ 1password_password }}"
-      secret_key: "{{ 1password_key }}"
+      master_password: '{{ 1password_password }}'
+      secret_key: '{{ 1password_key }}'
       subdomain: my
-      username: "{{ user.email }}"
+      username: '{{ user.email }}'
     search_terms: Andrey Elagin
   tags:
     - dotfiles
