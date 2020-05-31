@@ -10,6 +10,15 @@
     - aur
     - desktop-apps
 
+- name: enable and start the snapd service
+  service:
+    name: snapd.service
+    enabled: yes
+    state: started
+  tags:
+    - aur
+    - desktop-apps
+
 - name: install insync
   become: yes
   become_user: "{{ user.name }}"
