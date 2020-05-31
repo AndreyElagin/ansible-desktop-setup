@@ -5,8 +5,8 @@
 #    - role: console-apps
 #      - role: graphics
 #      - role: ui
-      - role: display-manager
-  #    - role: bluetooth
+#      - role: display-manager
+      - role: bluetooth
   #    - role: sound
 #    - role: desktop-apps
 #    - role: comcast.sdkman
