@@ -2,8 +2,8 @@
   become: yes
   roles:
 #    - role: user
-    - role: console-apps
-  #    - role: graphics
+#    - role: console-apps
+      - role: graphics
   #    - role: ui
   #    - role: display-manager
   #    - role: bluetooth
