@@ -1,5 +1,6 @@
 user:
     name: daddyingrave
+    email: daddyingrave@gmail.com
     uid: 1000
     group: daddyingrave
     shell: /usr/bin/bash
@@ -13,6 +14,10 @@ bluetooth:
   disable: False
 
 dotfiles:
-    url: git@github.com:pigmonkey/dotfiles.git
-    destination: projects/dotfiles
-    rcup_flags: -fx README.md
+    url: https://github.com/AndreyElagin/dotfiles
+
+versions:
+  java8: 8.0.252-librca
+  java11: 11.0.7-librca
+  sbt: 1.3.12
+  gradle: 6.4.1

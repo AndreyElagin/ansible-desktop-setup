@@ -1,0 +1,24 @@
+---
+- import_tasks: aur.yml
+
+- name: install chezmoi
+  pacman:
+    name:
+      - chezmoi
+    state: present
+  tags:
+    - dotfiles
+
+- name: login to 1password
+  become: yes
+  become_user: "{{ user.name }}"
+  command: eval $(op signin my.1password.com {{ user.email }})
+  tags:
+    - dotfiles
+
+- name: apply dotfiles
+  become: yes
+  become_user: "{{ user.name }}"
+  command: chezmoi init --apply --verbose {{ dotfiles.url }}
+  tags:
+    - dotfiles

@@ -2,27 +2,28 @@
   become: yes
   roles:
 #    - role: user
+    - role: dotfiles
 #    - role: console-apps
-#      - role: graphics
-#      - role: ui
-#      - role: display-manager
+#    - role: graphics
+#    - role: ui
+#    - role: display-manager
 #    - role: sound
 #    - role: bluetooth
 #    - role: desktop-apps
-    - role: comcast.sdkman
-      sdkman_user: "{{ user.name }}"
-      sdkman_group: "{{ user.group }}"
-      sdkman_auto_answer: true
-      sdkman_update: true
-      sdkman_install_packages:
-        - { candidate: java, version: 8.0.252-librca }
-        - { candidate: java, version: 11.0.7-librca }
-        - { candidate: sbt, version: 1.3.12 }
-        - { candidate: gradle, version: 6.4.1 }
-      sdkman_defaults:
-        java: 8.0.232-librca
-        gradle: 6.4.1
-        sbt: 1.3.12
+#    - role: comcast.sdkman
+#      sdkman_user: "{{ user.name }}"
+#      sdkman_group: "{{ user.group }}"
+#      sdkman_auto_answer: true
+#      sdkman_update: true
+#      sdkman_install_packages:
+#        - { candidate: java, version: "{{ versions.java8 }}" }
+#        - { candidate: java, version: "{{ versions.java11 }}" }
+#        - { candidate: sbt, version: "{{ versions.sbt }}" }
+#        - { candidate: gradle, version: "{{ versions.gradle }}" }
+#      sdkman_defaults:
+#        java: "{{ versions.java8 }}"
+#        sbt: "{{ versions.sbt }}"
+#        gradle: "{{ versions.gradle }}"
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
