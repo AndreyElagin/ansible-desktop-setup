@@ -21,7 +21,7 @@
     - aur
     - desktop-apps
 
-- name: install insync
+- name: install toolbox
   become: yes
   become_user: "{{ user.name }}"
   aur:
