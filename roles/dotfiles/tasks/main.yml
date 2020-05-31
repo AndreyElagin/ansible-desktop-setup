@@ -15,8 +15,8 @@
   command: op signin my.1password.com {{ user.email }}
   args:
     stdin:
-      - "vasian"
-      - "hello"
+      - "{{ 1password_key }}"
+      - "{{ 1password_password }}"
   tags:
     - dotfiles
 
