@@ -17,9 +17,9 @@
   tags:
     - dotfiles
 
-- name: apply dotfiles
-  become: yes
-  become_user: "{{ user.name }}"
-  command: chezmoi init --apply --verbose {{ dotfiles.url }}
-  tags:
-    - dotfiles
+#- name: apply dotfiles
+#  become: yes
+#  become_user: "{{ user.name }}"
+#  command: chezmoi init --apply --verbose {{ dotfiles.url }}
+#  tags:
+#    - dotfiles
