@@ -12,11 +12,12 @@
 - name: login to 1password
   become: yes
   become_user: "{{ user.name }}"
-  command: op signin my.1password.com {{ user.email }}
-  args:
-    stdin:
-      - "{{ 1password_key }}"
-      - "{{ 1password_password }}"
+  expect:
+    command: op signin my.1password.com {{ user.email }}
+    responses:
+      question:
+        - "{{ 1password_key }}"
+        - "{{ 1password_password }}"
   tags:
     - dotfiles
 
