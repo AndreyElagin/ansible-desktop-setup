@@ -1,5 +1,7 @@
 ---
 - name: import 1password gpg key
+  become: yes
+  become_user: "{{ user.name }}"
   command: gpg --recv-key 3FEF9748469ADBE15DA7CA80AC2D62742012EA22
   tags:
     - aur
