@@ -31,9 +31,4 @@
     name: pasystray
     state: present
 
-- name: install pulseaudio-ctl
-  yay:
-    name: pulseaudio-ctl
-    user: "{{ ansible_user }}"
-  tags:
-    - sound
+- import_tasks: aur.yml

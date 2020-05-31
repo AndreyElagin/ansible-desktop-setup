@@ -1,0 +1,11 @@
+---
+- name: install pulseaudio-ctl
+  become: yes
+  become_user: "{{ user.name }}"
+  aur:
+    name: pulseaudio-ctl
+    use: makepkg
+    state: present
+  tags:
+    - aur
+    - desktop-apps

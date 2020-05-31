@@ -6,8 +6,8 @@
 #      - role: graphics
 #      - role: ui
 #      - role: display-manager
-      - role: bluetooth
-  #    - role: sound
+    - role: sound
+    - role: bluetooth
 #    - role: desktop-apps
 #    - role: comcast.sdkman
 #      sdkman_user: "{{ user.name }}"
