@@ -1,4 +1,4 @@
-- hosts: vasian
+- hosts: localhost
   become: yes
   roles:
 #    - role: user
