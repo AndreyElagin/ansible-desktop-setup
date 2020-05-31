@@ -3,8 +3,8 @@
   roles:
 #    - role: user
 #    - role: console-apps
-      - role: graphics
-  #    - role: ui
+#      - role: graphics
+      - role: ui
   #    - role: display-manager
   #    - role: bluetooth
   #    - role: sound

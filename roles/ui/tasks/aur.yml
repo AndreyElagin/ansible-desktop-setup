@@ -1,9 +1,9 @@
 ---
-- name: install yay
+- name: install polybar
   become: yes
   become_user: "{{ user.name }}"
   aur:
-    name: yay
+    name: polybar
     use: makepkg
     state: present
   tags:
