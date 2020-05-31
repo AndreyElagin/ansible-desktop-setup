@@ -6,6 +6,7 @@
       - i3status
       - i3lock
       - rofi
+      - dunst
     state: present
   tags:
     - ui
