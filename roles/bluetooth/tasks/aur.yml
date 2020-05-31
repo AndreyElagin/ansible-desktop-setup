@@ -1,12 +1,13 @@
 ---
 - name: install PulseAudio bluetooth with LDAC/aptX support
+  become: yes
+  become_user: "{{ user.name }}"
   aur:
     name:
       - libldac
       - pulseaudio-modules-bt-git
     use: makepkg
     state: present
-    user: "{{ user.name }}"
   tags:
     - aur
     - bluetooth
