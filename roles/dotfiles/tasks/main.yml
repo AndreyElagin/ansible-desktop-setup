@@ -13,7 +13,7 @@
   become: yes
   become_user: "{{ user.name }}"
   shell:
-    cmd: eval $(op signin my.1password.com {{ user.email }})
+    cmd: op signin my.1password.com {{ user.email }}
   tags:
     - dotfiles
 
