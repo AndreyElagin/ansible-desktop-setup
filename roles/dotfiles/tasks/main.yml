@@ -9,26 +9,29 @@
   tags:
     - dotfiles
 
-- name: login to 1password
-  become: yes
-  become_user: "{{ user.name }}"
-  expect:
-    command: op signin my.1password.com {{ user.email }}
-    responses:
-      question:
-        - "{{ 1password_key }}"
-        - "{{ 1password_password }}"
-  tags:
-    - dotfiles
-
 #- name: login to 1password
 #  become: yes
 #  become_user: "{{ user.name }}"
-#  onepassword:
-#    secret_key: "{{ 1password_key }}"
-#    master_password: "{{ 1password_password }}"
+#  expect:
+#    command: op signin my.1password.com {{ user.email }}
+#    responses:
+#      question:
+#        - "{{ 1password_key }}"
+#        - "{{ 1password_password }}"
 #  tags:
 #    - dotfiles
+
+- name: login to 1password
+  become: yes
+  become_user: "{{ user.name }}"
+  onepassword_info:
+    auto_login:
+      master_password: "{{ 1password_password }}"
+      secret_key: "{{ 1password_key }}"
+      subdomain: my
+      username: "{{ user.email }}"
+  tags:
+    - dotfiles
 
 #- name: apply dotfiles
 #  become: yes
