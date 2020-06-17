@@ -12,14 +12,12 @@
   become: yes
   become_user: "{{ user.name }}"
   copy:
-    src: ~/.oh-my-zsh/templates/zshrc.zsh-template
-    dest: ~/.zshrc
+    src: "/home/{{ user.name }}/.oh-my-zsh/templates/zshrc.zsh-template"
+    dest: "/home/{{ user.name }}/.zshrc"
   tags:
     - console-apps
 
 - name: set default shell for user
-  become: yes
-  become_user: "{{ user.name }}"
   user:
     name: "{{ user.name }}"
     shell: /bin/zsh

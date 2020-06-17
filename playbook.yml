@@ -1,33 +1,33 @@
 - hosts: localhost
   become: yes
   roles:
-#    - role: user
-#    - role: console-apps
-#    - role: graphics
-#    - role: ui
-#    - role: display-manager
-#    - role: sound
-#    - role: bluetooth
-#    - role: desktop-apps
-#    - role: comcast.sdkman
-#      sdkman_user: "{{ user.name }}"
-#      sdkman_group: "{{ user.group }}"
-#      sdkman_auto_answer: true
-#      sdkman_update: true
-#      sdkman_install_packages:
-#        - { candidate: java, version: "{{ versions.java8 }}" }
-#        - { candidate: java, version: "{{ versions.java11 }}" }
-#        - { candidate: sbt, version: "{{ versions.sbt }}" }
-#        - { candidate: gradle, version: "{{ versions.gradle }}" }
-#      sdkman_defaults:
-#        java: "{{ versions.java8 }}"
-#        sbt: "{{ versions.sbt }}"
-#        gradle: "{{ versions.gradle }}"
-     - role: dotfiles
+    #   - role: user
+    - role: console-apps
+    - role: graphics
+    - role: ui
+    - role: display-manager
+    - role: sound
+    - role: bluetooth
+    - role: desktop-apps
+    - role: comcast.sdkman
+      sdkman_user: "{{ user.name }}"
+      sdkman_group: "{{ user.group }}"
+      sdkman_auto_answer: true
+      sdkman_update: true
+      sdkman_install_packages:
+        - { candidate: java, version: "{{ versions.java8 }}" }
+        - { candidate: java, version: "{{ versions.java11 }}" }
+        - { candidate: sbt, version: "{{ versions.sbt }}" }
+        - { candidate: gradle, version: "{{ versions.gradle }}" }
+      sdkman_defaults:
+        java: "{{ versions.java8 }}"
+        sbt: "{{ versions.sbt }}"
+        gradle: "{{ versions.gradle }}"
+#     - role: dotfiles
   vars_prompt:
-#    - name: user_password
-#      prompt: "Enter desired user password"
-    - name: 1password_key
-      prompt: "Enter 1password key"
-    - name: 1password_password
-      prompt: "Enter 1password password"
+    - name: user_password
+      prompt: "Enter desired user password"
+      #    - name: 1password_key
+      #      prompt: "Enter 1password key"
+      #    - name: 1password_password
+      #      prompt: "Enter 1password password"
